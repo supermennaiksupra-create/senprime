@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Senn Payment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: #fff;
+      color: #000;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    canvas#bgCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      background: #fff;
+    }
+
+    .page { position: relative; z-index: 10; }
+
+    .card {
+      background: rgba(255,255,255,0.9);
+      border: 2px solid #000;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      color: #000;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn {
+      background: #000;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      display: inline-block;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .btn:hover { box-shadow: 0 0 15px rgba(0,0,0,0.3); transform: scale(1.05); background: #222; }
+    .btn:active { transform: scale(0.96); }
+
+    .muted { color: #555; }
+    .heading { font-weight: 800; color: #000; opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .heading.show { opacity: 1; transform: translateY(0); }
+
+    @media (min-width:768px){ .container{max-width:760px} }
+    @media (max-width:480px){ .container{max-width:100%; padding-left:1rem; padding-right:1rem;} .card{padding:20px;} }
+  </style>
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <main class="page">
+    <section class="pt-12 pb-8 text-center">
+      <div class="container mx-auto px-6">
+        <img src="https://files.catbox.moe/lkxym3.jpg" alt="logo" class="mx-auto w-28 h-28 rounded-lg mb-6 shadow-lg border-2 border-black fadein">
+        <h1 class="text-4xl md:text-5xl heading">Selamat Datang di Website Payment<br>Senn Store</h1>
+        <p class="mt-4 text-lg text-gray-700">Scroll ke bawah untuk melihat daftar harga dan store penjualan</p>
+        <p class="mt-4 text-sm text-gray-600">Scroll jika ingin membeli produk saya</p>
+        <div class="mt-6">
+          <button id="musicBtn" class="btn">▶️ Play Music</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="store" class="pb-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl text-center mb-8 heading">List Harga & Store Penjualan</h2>
+
+        <div class="space-y-8">
+          <div class="card">
+            <h3 class="text-2xl font-bold">𝗢𝗣𝗘𝗡 𝗦𝗖𝗥𝗜𝗣𝗧 𝗢𝗧𝗔𝗫</h3>
+            <p class="mt-3"><span class="muted">Harga:</span> <strong>50k</strong></p>
+            <ul class="mt-2 list-disc list-inside muted">
+              <li>Delay Invisible + Sedot Kuota</li>
+              <li>Crash UI / Blank Delete</li>
+              <li>Delay Visible Hard</li>
+              <li>Crash iOS Hard</li>
+              <li>Bug Grup in Place</li>
+            </ul>
+            <div class="mt-6">
+              <a href="https://t.me/semknow?text=Bang%20mau%20buy%20Open%20Script%20Otax" class="btn" target="_blank">Beli Script Otax</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="text-2xl font-bold">𝗢𝗣𝗘𝗡 𝗠𝗨𝗥𝗕𝗨𝗚 𝗣𝗥𝗜𝗩𝗔𝗧𝗘</h3>
+            <p class="mt-3"><span class="muted">Harga:</span> <strong>15k</strong></p>
+            <ul class="mt-2 list-disc list-inside muted">
+              <li>Sender Always On</li>
+              <li>Bisa Bug GB/Grup</li>
+              <li>Bisa Bug iOS</li>
+              <li>Script Otax</li>
+              <li>Jeda 5 Menit</li>
+              <li>Max 20 Anggota</li>
+              <li>Dll</li>
+            </ul>
+            <div class="mt-6">
+              <a href="https://t.me/semknow?text=Bang%20mau%20buy%20Murbug%20Private" class="btn" target="_blank">Beli Murbug Private</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="text-2xl font-bold">𝗢𝗣𝗘𝗡 𝗠𝗨𝗥𝗜𝗗 𝗨𝗡𝗕𝗔𝗡𝗗</h3>
+            <p class="mt-3"><span class="muted">Harga:</span> <strong>15k</strong></p>
+            <ul class="mt-2 list-disc list-inside muted">
+              <li>Get MT Unband Spam</li>
+              <li>Get MT Perma Tinjau</li>
+              <li>Get MT Perma Fresh</li>
+              <li>Get MT Perma Batu</li>
+              <li>Get MT Perma Hard</li>
+              <li>Get MT Perma Batu Hard</li>
+              <li>Get My Perma Lumut</li>
+              <li>Bisa Unband All Opsi</li>
+              <li>Get Trik Unband</li>
+            </ul>
+            <div class="mt-6">
+              <a href="https://t.me/semknow?text=Bang%20mau%20buy%20Murid%20Unband" class="btn" target="_blank">Beli Murid Unband</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="text-2xl font-bold">𝗢𝗣𝗘𝗡 𝗣𝗔𝗡𝗘𝗟 𝗣𝗥𝗜𝗩𝗔𝗧𝗘</h3>
+            <ul class="mt-2 list-disc list-inside muted">
+              <li>Ram 1GB : Rp2.000</li>
+              <li>Ram 2GB : Rp3.000</li>
+              <li>Ram 3GB : Rp4.000</li>
+              <li>Ram 4GB : Rp5.000</li>
+              <li>Ram 5GB : Rp6.000</li>
+              <li>Ram 6GB : Rp7.000</li>
+              <li>Ram 7GB : Rp8.000</li>
+              <li>Ram 8GB : Rp9.000</li>
+              <li>Ram Unlimited : Rp12.000</li>
+            </ul>
+            <div class="mt-6">
+              <a href="https://t.me/semknow?text=Bang%20mau%20buy%20Panel%20Private" class="btn" target="_blank">Beli Panel Private</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="text-2xl font-bold">𝗢𝗣𝗘𝗡 𝗞𝗘𝗕𝗨𝗧𝗨𝗛𝗔𝗡 𝗟𝗔𝗜𝗡𝗡𝗬𝗔</h3>
+          <ul class="mt-3 list-disc list-inside muted">
+            <li>Nokos All Negara</li>
+            <li>Top Up All Game</li>
+            <li>WDP</li>
+            <li>Suntik All Sosmed</li>
+            <li>Aplikasi Premium</li>
+            <li>Paid Ban</li>
+            <li>Paid Unband</li>
+            <li>Murid Unband</li>
+            <li>Murid Ban</li>
+            <li>Script Bug Whats App</li>
+          </ul>
+          <div class="mt-6 text-center">
+            <a href="https://t.me/semknow" class="btn" target="_blank">Hubungi Owner</a>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <h3 class="text-3xl heading">Payment Pembayaran</h3>
+          <p class="text-gray-600 mt-2">Klik tombol di bawah untuk melihat detail</p>
+          <div class="mt-6 flex justify-center gap-4 flex-wrap">
+            <button class="btn" onclick="showPayment('Dana : 085655920267')">Dana</button>
+            <button class="btn" onclick="showPayment('GoPay : 085655920267')">GoPay</button>
+            <button class="btn" onclick="showPayment('QRIS')">QRIS</button>
+          </div>
+          <div id="paymentDisplay" class="mt-6"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pb-12 text-center text-gray-600">
+      <p>Owner @@semknow</p>
+    </footer>
+  </main>
+
+  <script>
+    // 🎵 Musik preload
+    const music = new Audio('https://files.catbox.moe/6czkx4.mp3');
+    music.preload = 'auto';
+    const musicBtn = document.getElementById('musicBtn');
+    let playing = false;
+
+    musicBtn.addEventListener('click', async () => {
+      try {
+        if (!playing) {
+          await music.play();
+          musicBtn.textContent = '⏸️ Pause Music';
+          playing = true;
+        } else {
+          music.pause();
+          musicBtn.textContent = '▶️ Play Music';
+          playing = false;
+        }
+      } catch (e) {
+        console.log('Audio belum bisa diputar otomatis:', e);
+      }
+    });
+
+    // 💫 Animasi fade-in saat scroll
+    const cards = document.querySelectorAll('.card');
+    const headings = document.querySelectorAll('.heading');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach(c => observer.observe(c));
+    headings.forEach(h => observer.observe(h));
+
+    // 🔮 Background animation
+    const canvas = document.getElementById("bgCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height, particles;
+
+    function init() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = [];
+      for (let i = 0; i < 70; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.strokeStyle = "#000";
+      ctx.fillStyle = "#000";
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.globalAlpha = 1 - dist / 120;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+          }
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+      }
+
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", init);
+    init();
+    draw();
+
+    // 💳 Payment Display
+    function showPayment(type) {
+      const box = document.getElementById("paymentDisplay");
+      box.innerHTML = "";
+
+      if (type === "QRIS") {
+        box.innerHTML = `
+          <div id="loadingText" style="color:#555; margin-bottom:10px;">Memuat QRIS...</div>
+          <img id="qrisImg" src="" alt="QRIS" style="max-width:300px;border-radius:8px;box-shadow:0 0 20px rgba(0,0,0,0.3); display:block; margin:0 auto; opacity:0; transition:opacity 0.5s ease;">
+        `;
+        const qrisImg = document.getElementById("qrisImg");
+        qrisImg.src = "https://files.catbox.moe/5hegs9.jpg";
+        qrisImg.onload = () => {
+          document.getElementById("loadingText").remove();
+          qrisImg.style.opacity = "1";
+        };
+      } else {
+        box.innerHTML = `<div style="display:inline-block;padding:12px 16px;background:#000;color:#fff;border-radius:10px;font-weight:600;transition:all 0.4s ease;">${type}</div>`;
+      }
+    }
+  </script>
+</body>
+</html>
